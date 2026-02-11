@@ -9,7 +9,8 @@ urlpatterns = [
     path('api/attendance/list/', AttendanceList.as_view()),
 
     path('employees-ui/', employees_page),
-    path('attendance-ui/', attendance_page)
+    path('attendance-ui/', attendance_page),
+    path('', employees_page, name='home'),
 
 
 ]
