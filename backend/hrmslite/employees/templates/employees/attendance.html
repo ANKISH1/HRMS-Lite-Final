@@ -1,0 +1,30 @@
+{% extends "employees/base.html" %}
+{% block content %}
+
+<h2>Attendance</h2>
+
+<input id="emp" placeholder="Employee ID">
+<input id="date" type="date">
+<select id="status">
+    <option>Present</option>
+    <option>Absent</option>
+</select>
+<button onclick="mark()">Mark</button>
+
+<script>
+function mark() {
+    fetch("/api/attendance/", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            employee: emp.value,
+            date: date.value,
+            status: status.value
+        })
+    })
+    .then(res => res.json())
+    .then(data => alert("Done"));
+}
+</script>
+
+{% endblock %}
